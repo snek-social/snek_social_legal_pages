@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – SNEK</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: "Segoe UI", sans-serif;
+      padding: 40px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff4d94;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(255, 77, 148, 0.4);
+    }
+
+    /* ----------- FAQ Section ----------- */
+    .faq-card {
+      background: #111;
+      margin-bottom: 25px;
+      padding: 20px 25px;
+      border-radius: 10px;
+      border: 1px solid #ff4d94;
+      box-shadow: 0 0 15px rgba(255, 77, 148, 0.2);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .faq-question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      margin-top: 15px;
+      line-height: 1.5;
+      display: none;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .faq-card:hover {
+      box-shadow: 0 0 25px rgba(255, 77, 148, 0.35);
+    }
+
+    /* ----------- Contact Form ----------- */
+    form {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      margin-top: 50px;
+      box-shadow: 0 0 20px rgba(255, 77, 148, 0.25);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff4d94;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px rgba(255, 77, 148, 0.4);
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 500;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      background: #2a2a2a;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      background: #ff4d94;
+      border: none;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff337f;
+    }
+
+    .success-msg {
+      margin-top: 15px;
+      color: #0f0;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Contact Us & FAQs</h1>
+
+    <!-- ------------------ FAQs SECTION --------------------- -->
+    <div id="faq-section">
+
+      <div class="faq-card">
+        <div class="faq-question">
+          What is SNEK?
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          SNEK is a social platform designed to be safe, fun, and community-friendly. We prioritize user protection and transparency.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question">
+          How do I report a user or safety concern?
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          You can use our <a href="report/index.html" style="color:#ff4d94">Report a Concern</a> form.  
+          For urgent risks involving minors or exploitation, we act immediately.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question">
+          Do you store my personal data?
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          We collect only minimal data as outlined in our Privacy Policy. We do not sell or misuse your information.
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question">
+          How do I delete my SNEK account?
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          You can use this form to contact us and request deletion, and our team will process it safely.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ------------------ CONTACT FORM SECTION --------------------- -->
+    <form id="contactForm" action="https://formspree.io/f/myzngypr" method="POST">
+      <h2>Send Us a Message</h2>
+
+      <label>Your Name</label>
+      <input type="text" name="name" placeholder="Enter your name" required>
+
+      <label>Your Email</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+
+      <label>Your Message</label>
+      <textarea name="message" rows="6" placeholder="How can we help you?" required></textarea>
+
+      <button type="submit">Submit</button>
+
+      <p class="success-msg" id="successMsg">Thank you! We received your message.</p>
+    </form>
+  </div>
+
+  <!-- JS for FAQ accordion + form success -->
+  <script>
+    // FAQ accordion
+    document.querySelectorAll(".faq-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const answer = card.querySelector(".faq-answer");
+        const symbol = card.querySelector("span");
+
+        const isOpen = answer.style.display === "block";
+        document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
+        document.querySelectorAll(".faq-question span").forEach(s => s.textContent = "+");
+
+        if (!isOpen) {
+          answer.style.display = "block";
+          symbol.textContent = "−";
+        }
+      });
+    });
+
+    // Success message for contact form
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", function(e) {
+      setTimeout(() => {
+        document.getElementById("successMsg").style.display = "block";
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
