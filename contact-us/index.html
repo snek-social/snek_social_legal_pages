@@ -1,225 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us – SNEK</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us – SNEK</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
-      padding: 40px 10px;
-      display: flex;
-      justify-content: center;
-    }
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      text-align: center;
-      color: #ff4d94;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      text-shadow: 0 0 10px rgba(255, 77, 148, 0.4);
-    }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #f9fafb;
+            color: #374151;
+            line-height: 1.6;
+        }
 
-    /* ----------- FAQ Section ----------- */
-    .faq-card {
-      background: #111;
-      margin-bottom: 25px;
-      padding: 20px 25px;
-      border-radius: 10px;
-      border: 1px solid #ff4d94;
-      box-shadow: 0 0 15px rgba(255, 77, 148, 0.2);
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+            color: #111827;
+        }
 
-    .faq-question {
-      font-size: 1.1rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    .faq-answer {
-      margin-top: 15px;
-      line-height: 1.5;
-      display: none;
-      font-size: 0.95rem;
-      color: #ddd;
-    }
+        /* NAVBAR */
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .faq-card:hover {
-      box-shadow: 0 0 25px rgba(255, 77, 148, 0.35);
-    }
+        .nav-container {
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
 
-    /* ----------- Contact Form ----------- */
-    form {
-      background: #1a1a1a;
-      padding: 30px;
-      border-radius: 12px;
-      margin-top: 50px;
-      box-shadow: 0 0 20px rgba(255, 77, 148, 0.25);
-    }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
 
-    h2 {
-      text-align: center;
-      color: #ff4d94;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-      text-shadow: 0 0 10px rgba(255, 77, 148, 0.4);
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+        }
 
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: 500;
-    }
+        .nav-links a:hover {
+            color: #4338ca;
+        }
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      background: #2a2a2a;
-      border: none;
-      border-radius: 6px;
-      color: #fff;
-      font-size: 1rem;
-    }
+        .btn-download {
+            background: #4f46e5;
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
 
-    textarea {
-      resize: vertical;
-    }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+        }
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 25px;
-      background: #ff4d94;
-      border: none;
-      border-radius: 30px;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem 1.5rem;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    button:hover {
-      background: #ff337f;
-    }
+        .mobile-menu a {
+            padding: 0.75rem 0;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+        }
 
-    .success-msg {
-      margin-top: 15px;
-      color: #0f0;
-      text-align: center;
-      display: none;
-    }
-  </style>
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #ec4899 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 2.75rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* MAIN */
+        main {
+            padding: 4rem 1rem;
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .card a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* FORM */
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(58, 5, 150, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #ec4899 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>Contact Us & FAQs</h1>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/02now7laz/uploads/SnekLogo.png" alt="SNEK" style="height:60px">
+            </a>
 
-    <!-- ------------------ FAQs SECTION --------------------- -->
-    <div id="faq-section">
+            <ul class="nav-links">
+                <li><a href="/report">Support</a></li>
+                <li><a href="/child-safety">Safety</a></li>
+                <li><a href="/contact-us">Contact</a></li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.snek.app" class="btn-download"
+                        target="_blank">Download</a></li>
+            </ul>
 
-      <div class="faq-card">
-        <div class="faq-question">
-          What is SNEK?
-          <span>+</span>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
         </div>
-        <div class="faq-answer">
-          SNEK is a social platform designed to be safe, fun, and community-friendly. We prioritize user protection and transparency.
-        </div>
-      </div>
 
-      <div class="faq-card">
-        <div class="faq-question">
-          How do I report a user or safety concern?
-          <span>+</span>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/report">Support</a>
+            <a href="/child-safety">Safety</a>
+            <a href="/contact-us">Contact</a>
+            <a href="https://play.google.com/store/apps/details?id=com.snek.app" class="btn-download">Download</a>
         </div>
-        <div class="faq-answer">
-          You can use our <a href="report/index.html" style="color:#ff4d94">Report a Concern</a> form.  
-          For urgent risks involving minors or exploitation, we act immediately.
-        </div>
-      </div>
+    </nav>
 
-      <div class="faq-card">
-        <div class="faq-question">
-          Do you store my personal data?
-          <span>+</span>
+    <!-- HEADER -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We’re here to help — reach out anytime.</p>
         </div>
-        <div class="faq-answer">
-          We collect only minimal data as outlined in our Privacy Policy. We do not sell or misuse your information.
-        </div>
-      </div>
-
-      <div class="faq-card">
-        <div class="faq-question">
-          How do I delete my SNEK account?
-          <span>+</span>
-        </div>
-        <div class="faq-answer">
-          You can use this form to contact us and request deletion, and our team will process it safely.
-        </div>
-      </div>
-
     </div>
 
-    <!-- ------------------ CONTACT FORM SECTION --------------------- -->
-    <form id="contactForm" action="https://formspree.io/f/myzngypr" method="POST">
-      <h2>Send Us a Message</h2>
+    <!-- MAIN -->
+    <main>
 
-      <label>Your Name</label>
-      <input type="text" name="name" placeholder="Enter your name" required>
+        <div class="two-column">
 
-      <label>Your Email</label>
-      <input type="email" name="email" placeholder="Enter your email" required>
+            <!-- LEFT -->
+            <div>
+                <div class="card">
+                    <h3>General Support</h3>
+                    <p>Questions about SNEK or your account</p>
+                    <a href="mailto:support@snek.app">support@snek.co.in</a>
+                </div>
 
-      <label>Your Message</label>
-      <textarea name="message" rows="6" placeholder="How can we help you?" required></textarea>
+                <div class="card">
+                    <h3>Safety & Trust</h3>
+                    <p>Urgent safety concerns or abuse reports</p>
+                    <a href="mailto:safety@snek.co.in">safety@snek.co.in</a>
+                </div>
+            </div>
 
-      <button type="submit">Submit</button>
+            <!-- RIGHT -->
+            <div class="form-container">
+                <h2>Send Us a Message</h2>
 
-      <p class="success-msg" id="successMsg">Thank you! We received your message.</p>
-    </form>
-  </div>
+                <form action="https://formspree.io/f/myzngypr" method="POST">
 
-  <!-- JS for FAQ accordion + form success -->
-  <script>
-    // FAQ accordion
-    document.querySelectorAll(".faq-card").forEach(card => {
-      card.addEventListener("click", () => {
-        const answer = card.querySelector(".faq-answer");
-        const symbol = card.querySelector("span");
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
 
-        const isOpen = answer.style.display === "block";
-        document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
-        document.querySelectorAll(".faq-question span").forEach(s => s.textContent = "+");
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
 
-        if (!isOpen) {
-          answer.style.display = "block";
-          symbol.textContent = "−";
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category">
+                            <option>General</option>
+                            <option>Technical</option>
+                            <option>Safety</option>
+                            <option>Business</option>
+                            <option>Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button class="btn-submit" type="submit">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/report">Help Center</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions">Terms of Service</a></li>
+                        <li><a href="/child-safety">Child Safety</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="color: #9ca3af;">© 2025 SNEK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         }
-      });
-    });
-
-    // Success message for contact form
-    const form = document.getElementById("contactForm");
-    form.addEventListener("submit", function(e) {
-      setTimeout(() => {
-        document.getElementById("successMsg").style.display = "block";
-      }, 500);
-    });
-  </script>
+    </script>
 
 </body>
+
 </html>
