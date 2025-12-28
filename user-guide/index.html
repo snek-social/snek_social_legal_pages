@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Features & User Guide - SNEK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background-color: #f9fafb;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 2rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.75rem; margin-top: 1.5rem; }
+        h4 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        .btn-download {
+            background: #4f46e5;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-download:hover {
+            background: #4338ca;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 75rem;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .toc-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .toc-grid a {
+            color: #4f46e5;
+            text-decoration: none;
+            transition: text-decoration 0.3s;
+        }
+
+        .toc-grid a:hover {
+            text-decoration: underline;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-box {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .icon-indigo { background: #e0e7ff; }
+        .icon-purple { background: #f3e8ff; }
+        .icon-pink { background: #fce7f3; }
+        .icon-blue { background: #dbeafe; }
+        .icon-green { background: #d1fae5; }
+        .icon-orange { background: #fed7aa; }
+        .icon-teal { background: #ccfbf1; }
+        .icon-yellow { background: #fef3c7; }
+
+        .step-box {
+            border-left: 4px solid #4f46e5;
+            padding-left: 1.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-box.purple { border-left-color: #9333ea; }
+        .step-box.pink { border-left-color: #ec4899; }
+        .step-box.blue { border-left-color: #2563eb; }
+        .step-box.green { border-left-color: #059669; }
+        .step-box.orange { border-left-color: #ea580c; }
+
+        .step-box p {
+            color: #4b5563;
+            margin-top: 0.5rem;
+        }
+
+        .step-box ul {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+            color: #4b5563;
+        }
+
+        .info-highlight {
+            background: #e0e7ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .info-highlight.purple { background: #f3e8ff; }
+        .info-highlight.green { background: #d1fae5; }
+        .info-highlight.yellow { background: #fef3c7; }
+
+        .info-highlight p {
+            color: #1e3a8a;
+            margin: 0;
+        }
+
+        .info-highlight.purple p { color: #6b21a8; }
+        .info-highlight.green p { color: #065f46; }
+        .info-highlight.yellow p { color: #78350f; }
+
+        .two-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .grid-card {
+            background: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .grid-card.green {
+            background: #d1fae5;
+            border-color: #059669;
+        }
+
+        .grid-card.red {
+            background: #fee2e2;
+            border-color: #dc2626;
+        }
+
+        .grid-card.orange {
+            background: #fed7aa;
+            border-color: #ea580c;
+        }
+
+        .grid-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-card p {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin: 0.25rem 0;
+        }
+
+        .grid-card ul {
+            font-size: 0.875rem;
+            margin-left: 1rem;
+            color: #4b5563;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-box ul {
+            color: rgba(255,255,255,0.9);
+            margin-left: 1.5rem;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box p {
+            color: #78350f;
+            margin: 0;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .two-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">SNEK</a>
+            <ul class="nav-links">
+                <li><a href="Features.html">Features</a></li>
+                <li><a href="Privacy.html">Privacy</a></li>
+                <li><a href="Terms.html">Terms</a></li>
+                <li><a href="ChildSafety.html">Child Safety</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Report.html">Report</a></li>
+                <li><a href="index.html" class="btn-download">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>App Features & User Guide</h1>
+            <p>Everything you need to know about using SNEK - Your College Social Network</p>
+        </div>
+    </div>
+
+    <main>
+        <!-- Table of Contents -->
+        <div class="toc-box">
+            <h2>Quick Navigation</h2>
+            <div class="toc-grid">
+                <a href="#getting-started">1. Getting Started</a>
+                <a href="#profile-setup">2. Profile Setup</a>
+                <a href="#home-matching">3. Home & Matching</a>
+                <a href="#chat">4. Chat</a>
+                <a href="#groups">5. Groups</a>
+                <a href="#feed">6. Feed</a>
+                <a href="#confessions">7. Confessions</a>
+                <a href="#profile-settings">8. Profile & Settings</a>
+                <a href="#premium">9. Premium Features</a>
+            </div>
+        </div>
+
+        <!-- 1. Getting Started -->
+        <section id="getting-started" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-indigo">👤</div>
+                <h2>1. Getting Started</h2>
+            </div>
+
+            <h3>Registration & Login</h3>
+
+            <div class="step-box">
+                <h4>Step 1: Download the App</h4>
+                <p>Download SNEK from the App Store (iOS) or Google Play (Android).</p>
+            </div>
+
+            <div class="step-box">
+                <h4>Step 2: Choose Login Method</h4>
+                <p>Sign up using Google authentication or email verification via OTP.</p>
+                <ul>
+                    <li><strong>Google Login:</strong> Quick one-tap authentication</li>
+                    <li><strong>Email OTP:</strong> Receive a one-time password to your email</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <h4>Step 3: Provide Your Name</h4>
+                <p><strong>Important:</strong> Your name must perfectly match the name on your college identity card. You cannot change this later.</p>
+            </div>
+
+            <div class="step-box">
+                <h4>Step 4: Enter Date of Birth</h4>
+                <p><strong>Important:</strong> Make sure your age is correct. You must be 18+ to use SNEK. This cannot be changed later.</p>
+            </div>
+
+            <div class="step-box">
+                <h4>Step 5: Select Gender</h4>
+                <p>Choose how you identify yourself: Male or Female.</p>
+            </div>
+
+            <div class="info-highlight">
+                <p><strong>Animation:</strong> After completing these steps, you'll see a welcome animation before continuing.</p>
+            </div>
+        </section>
+
+        <!-- 2. Profile Setup -->
+        <section id="profile-setup" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-purple">📸</div>
+                <h2>2. Profile Setup</h2>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 6: Select Your State</h4>
+                <p>Choose the state where your college is located. This helps us show you relevant connections.</p>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 7: Select Your College</h4>
+                <p>You'll only see colleges from the state you selected. Choose your current college from the list.</p>
+                <p style="font-size: 0.875rem; color: #6b7280;"><strong>Example:</strong> If you selected "West Bengal", only colleges in West Bengal will appear.</p>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 8: Upload College ID Card</h4>
+                <p>Upload a clear photo of your college ID card. This is used for verification purposes.</p>
+                <ul>
+                    <li>✓ Ensure the ID is clearly visible</li>
+                    <li>✓ Your name must match the name you provided</li>
+                    <li>✓ Photo should be recent and not blurry</li>
+                </ul>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 9: Verification Selfie</h4>
+                <p>Take a selfie for verification. This must match the face on your college ID card.</p>
+                <p style="font-size: 0.875rem; color: #6b7280;">This selfie is only for verification and won't be shown on your profile.</p>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 10: Add Profile Photos</h4>
+                <p>Upload 2-6 clear photos of yourself for your profile.</p>
+                <ul>
+                    <li><strong>Minimum:</strong> 2 photos required</li>
+                    <li><strong>Maximum:</strong> 6 photos allowed</li>
+                    <li><strong>Tip:</strong> Profiles with clear pics get verified earlier!</li>
+                </ul>
+            </div>
+
+            <div class="info-highlight purple">
+                <p><strong>Animation:</strong> After uploading photos, you'll see an inspiring animation with quotes about images!</p>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 11: Select Hobbies</h4>
+                <p>Choose your hobbies from categorized options. Select at least 4 categories.</p>
+                <p style="font-size: 0.875rem; color: #6b7280;">Categories may include: Sports, Arts, Music, Technology, and more.</p>
+            </div>
+
+            <div class="step-box purple">
+                <h4>Step 12: Subscription Introduction (Optional)</h4>
+                <p>Learn about SNEK Premium features. You can:</p>
+                <ul>
+                    <li>Tap "Subscribe Now" to view premium plans</li>
+                    <li>Tap "Skip" (top right corner) to continue with free version</li>
+                </ul>
+            </div>
+
+            <div class="info-highlight green">
+                <p><strong>✓ Profile Complete!</strong> You'll see a completion animation with motivational quotes. Your profile will be verified within 1 hour.</p>
+            </div>
+        </section>
+
+        <!-- 3. Home & Matching -->
+        <section id="home-matching" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-pink">❤️</div>
+                <h2>3. Home & Matching</h2>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>Note:</strong> Your profile must be verified before you can fully interact. Unverified profiles will see a verification pending message on all pages except the profile page.</p>
+            </div>
+
+            <h3>Home Page Layout</h3>
+            <p>The home page is designed similar to Happn with the following features:</p>
+
+            <div class="two-grid">
+                <div class="grid-card">
+                    <h4>Top Left: Profile Icon</h4>
+                    <p>Tap to go to your profile page</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>Top Right: Notifications</h4>
+                    <p>Opens from top to bottom</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>Top Right: Filter</h4>
+                    <p>Opens from bottom to top</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>Center: Profile Cards</h4>
+                    <p>Swipe right (like) or left (pass)</p>
+                </div>
+            </div>
+
+            <h3>Profile Card Display</h3>
+            <ul>
+                <li><strong>Name:</strong> Shown in bold letters</li>
+                <li><strong>College Name:</strong> Shown below name in smaller letters</li>
+                <li><strong>Note:</strong> No age display, no superlike, no boost buttons</li>
+            </ul>
+
+            <h3>How to Swipe</h3>
+            <div class="two-grid">
+                <div class="grid-card green">
+                    <h4>Swipe Right / Tap ❤️</h4>
+                    <p>You're interested in this person</p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>If they also swipe right = Match!</li>
+                        <li>They'll get a notification (unless they disabled it)</li>
+                        <li>Both receive a match notification</li>
+                    </ul>
+                </div>
+
+                <div class="grid-card red">
+                    <h4>Swipe Left / Tap ✗</h4>
+                    <p>Pass on this profile</p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>They won't be notified</li>
+                        <li>You might see them again later</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Filter Options</h3>
+            <div class="step-box blue">
+                <h4>1. College-wise Filter</h4>
+                <p>Show only students from your college. Perfect for finding people you might meet on campus.</p>
+            </div>
+
+            <div class="step-box blue">
+                <h4>2. State-wise Filter</h4>
+                <p>Show students from all colleges in your state. Great for meeting people from nearby colleges.</p>
+            </div>
+
+            <div class="step-box blue">
+                <h4>3. Don't Notify on Right Swipe</h4>
+                <p>When enabled, others won't get a notification when you swipe right on them. They'll only know if you match.</p>
+            </div>
+
+            <h3>Notifications</h3>
+            <p>You'll receive notifications for:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>✓ New matches</li>
+                <li>✓ Someone swiped right on you (tap to see their profile)</li>
+                <li>✓ New group created in your college</li>
+                <li>✓ Group event reminders (2 hours before)</li>
+                <li>✓ Profile verification status</li>
+                <li>✓ <em>Note: Chat notifications appear in chat, not in notification center</em></li>
+            </ul>
+        </section>
+
+        <!-- 4. Chat -->
+        <section id="chat" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-blue">💬</div>
+                <h2>4. Chat Feature</h2>
+            </div>
+
+            <p>SNEK's chat interface is designed similar to Happn for a familiar and intuitive experience.</p>
+
+            <div class="step-box blue">
+                <h4>When Chats Are Created</h4>
+                <p>A chat conversation is automatically created when two users match (both swipe right on each other).</p>
+                <p style="font-size: 0.875rem; color: #6b7280;">Both users receive a notification to start the conversation.</p>
+            </div>
+
+            <div class="step-box blue">
+                <h4>Chat Features</h4>
+                <ul>
+                    <li><strong>Text Messages:</strong> Send and receive text messages in real-time</li>
+                    <li><strong>Image Sharing:</strong> Share photos within the chat</li>
+                    <li><strong>Read Receipts:</strong> See when messages are delivered and read</li>
+                </ul>
+            </div>
+
+            <h3>Chat Options</h3>
+            <div class="two-grid">
+                <div class="grid-card">
+                    <h4>Clear Chat</h4>
+                    <p>Delete all messages in this conversation. The chat will remain but history is cleared.</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>Block User</h4>
+                    <p>Prevent this user from contacting you. They won't be notified.</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>Report User</h4>
+                    <p>Report inappropriate behavior or content to our moderation team.</p>
+                </div>
+            </div>
+
+            <div class="info-highlight">
+                <p><strong>Safety Tip:</strong> Never share personal information like phone numbers, addresses, or financial details in chat. If someone makes you uncomfortable, block and report them immediately.</p>
+            </div>
+        </section>
+
+        <!-- 5. Groups -->
+        <section id="groups" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-green">👥</div>
+                <h2>5. Groups Feature</h2>
+            </div>
+
+            <p>Groups help you meet people from your college who share your interests for activities like sports, music, hiking, and more.</p>
+
+            <h3>Creating a Group (Premium Users Only)</h3>
+            
+            <div class="step-box green">
+                <h4>Step 1: Premium Subscription Required</h4>
+                <p>Only SNEK Premium subscribers can create groups.</p>
+                <ul>
+                    <li>Premium includes 5 free groups per month</li>
+                    <li>Additional groups require a small fee</li>
+                </ul>
+            </div>
+
+            <div class="step-box green">
+                <h4>Step 2: Fill Group Details</h4>
+                <ul>
+                    <li><strong>Title:</strong> Name of the group/activity</li>
+                    <li><strong>Description:</strong> What the group is about</li>
+                    <li><strong>Spot:</strong> Meeting location on campus</li>
+                    <li><strong>Date & Time:</strong> When the activity will happen</li>
+                </ul>
+                <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Groups can be created up to 30 days in advance.</p>
+            </div>
+
+            <div class="step-box green">
+                <h4>Step 3: Group is Created</h4>
+                <p>All students from your college receive a notification about the new group.</p>
+            </div>
+
+            <h3>Joining a Group</h3>
+            <div class="two-grid">
+                <div class="grid-card green">
+                    <h4>Premium Users</h4>
+                    <p>Join any group from their college for free</p>
+                </div>
+
+                <div class="grid-card orange">
+                    <h4>Free Users</h4>
+                    <p>Pay a small participation fee to join groups</p>
+                </div>
+            </div>
+
+            <h3>Group Visibility</h3>
+            <div class="step-box green">
+                <p><strong>Before joining, you can see:</strong></p>
+                <ul>
+                    <li>✓ Title</li>
+                    <li>✓ Description</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>After joining, you can see:</strong></p>
+                <ul>
+                    <li>✓ Spot (meeting location)</li>
+                    <li>✓ Date and time</li>
+                    <li>✓ Other group members</li>
+                    <li>✓ Access to group chat</li>
+                </ul>
+            </div>
+
+            <h3>Group Chat</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Group chat is created automatically when the group is created</li>
+                <li>All members can chat with each other</li>
+                <li>View other members' profiles by tapping their name</li>
+                <li>Chat is disabled 1 hour after the scheduled event time</li>
+                <li>Everyone receives a reminder notification 2 hours before the event</li>
+            </ul>
+        </section>
+
+        <!-- 6. Feed -->
+        <section id="feed" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-orange">🖼️</div>
+                <h2>6. Feed</h2>
+            </div>
+
+            <p>The Feed is a public space where all users can share posts, photos, and updates visible to everyone on SNEK.</p>
+
+            <h3>Creating a Post</h3>
+            <div class="step-box orange">
+                <h4>Step 1: Create Your Post</h4>
+                <p>Share text, photos, or videos. Your name and college name are automatically displayed above the post.</p>
+            </div>
+
+            <div class="step-box orange">
+                <h4>Step 2: Post is Live</h4>
+                <p>Your post appears in the feed for all SNEK users to see.</p>
+            </div>
+
+            <h3>Interacting with Posts</h3>
+            <div class="two-grid">
+                <div class="grid-card">
+                    <h4>❤️ Like</h4>
+                    <p>Show appreciation for a post</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>💬 Comment</h4>
+                    <p>Share your thoughts and engage</p>
+                </div>
+
+                <div class="grid-card">
+                    <h4>🔄 Share</h4>
+                    <p>Share with your connections</p>
+                </div>
+            </div>
+
+            <h3>Publisher Controls</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Delete Comments:</strong> Remove inappropriate comments on your posts</li>
+                <li><strong>Delete Post:</strong> Remove your post entirely</li>
+                <li><strong>View Profile:</strong> Anyone can tap on a post to view the publisher's profile</li>
+            </ul>
+        </section>
+
+        <!-- 7. Confessions -->
+        <section id="confessions" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-purple">🔒</div>
+                <h2>7. Confessions</h2>
+            </div>
+
+            <p>Confessions is a semi-anonymous space for text-based posts visible only to students from your college.</p>
+
+            <div class="info-highlight purple">
+                <h4 style="margin-bottom: 0.5rem;">Key Differences from Feed</h4>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>✓ Text-only posts (no images or videos)</li>
+                    <li>✓ Only visible to students from your college</li>
+                    <li>✓ More private and community-focused</li>
+                </ul>
+            </div>
+
+            <h3>Creating a Confession</h3>
+            <div class="step-box purple">
+                <p>Write your text-based confession. Only students from your college will see it.</p>
+                <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Your name and college are still displayed, but the audience is limited to your college community.</p>
+            </div>
+
+            <h3>Interaction Options</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Like:</strong> Show support for confessions</li>
+                <li><strong>Comment:</strong> Share your perspective</li>
+                <li><strong>Report:</strong> Flag inappropriate content</li>
+            </ul>
+        </section>
+
+        <!-- 8. Profile & Settings -->
+        <section id="profile-settings" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-teal">⚙️</div>
+                <h2>8. Profile & Settings</h2>
+            </div>
+
+            <h3>Profile Page Layout</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Top:</strong> Your name in bold letters</li>
+                <li><strong>Top Right:</strong> Edit Profile button</li>
+                <li><strong>Below Name:</strong> SNEK Premium / Subscription card</li>
+                <li><strong>Bottom:</strong> Settings and Help Centre options</li>
+            </ul>
+
+            <h3>What You Can Edit</h3>
+            <div class="two-grid">
+                <div class="grid-card green">
+                    <h4>✓ Editable</h4>
+                    <ul>
+                        <li>Email address</li>
+                        <li>Profile photos (anytime)</li>
+                        <li>College name (requires new ID)</li>
+                        <li>Hobbies</li>
+                    </ul>
+                </div>
+
+                <div class="grid-card red">
+                    <h4>✗ Cannot Edit</h4>
+                    <ul>
+                        <li>Name</li>
+                        <li>Date of birth</li>
+                        <li>Gender</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>Important:</strong> If you change your college name, you must upload a new college ID card. Your profile will be moved to "unverified" status and must be re-verified. This process takes up to 1 hour.</p>
+            </div>
+
+            <h3>Settings Menu</h3>
+            <div class="step-box">
+                <h4>1. Invite Friends</h4>
+                <p>Share SNEK with your friends via a referral link</p>
+            </div>
+
+            <div class="step-box">
+                <h4>2. Blocked Users</h4>
+                <p>View and manage users you've blocked. Unblock them if you change your mind.</p>
+            </div>
+
+            <div class="step-box">
+                <h4>3. Terms and Conditions</h4>
+                <p>Read SNEK's terms of service</p>
+            </div>
+
+            <div class="step-box">
+                <h4>4. Privacy Policy</h4>
+                <p>Learn how we protect and use your data</p>
+            </div>
+
+            <div class="step-box">
+                <h4>5. Deactivate Profile</h4>
+                <p>Temporarily deactivate your account. You can reactivate it anytime within 90 days.</p>
+            </div>
+
+            <div class="step-box">
+                <h4>6. Logout</h4>
+                <p>Sign out of your SNEK account</p>
+            </div>
+        </section>
+
+        <!-- 9. Premium Features -->
+        <section id="premium" class="content-section">
+            <div class="section-header">
+                <div class="icon-box icon-yellow">⭐</div>
+                <h2>9. SNEK Premium</h2>
+            </div>
+
+            <p>Upgrade to SNEK Premium to unlock exclusive features and enhance your experience.</p>
+
+            <h3>Premium Benefits</h3>
+            <div class="two-grid">
+                <div class="grid-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%); border-color: #f59e0b;">
+                    <h4>✓ Create Groups</h4>
+                    <p>Create up to 5 groups per month to meet people who share your interests.</p>
+                    <p style="margin-top: 0.5rem;">Additional groups available for a small fee</p>
+                </div>
+
+                <div class="grid-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%); border-color: #f59e0b;">
+                    <h4>✓ Join Groups Free</h4>
+                    <p>Join unlimited groups from your college without paying participation fees.</p>
+                </div>
+
+                <div class="grid-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%); border-color: #f59e0b;">
+                    <h4>✓ More Features Coming</h4>
+                    <p>Additional premium features will be announced soon!</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">How to Subscribe</h3>
+            <div class="info-highlight">
+                <ol style="margin-left: 1.5rem;">
+                    <li>Go to Profile → Tap on "SNEK Premium" card</li>
+                    <li>Choose your subscription plan (monthly or annual)</li>
+                    <li>Complete payment securely</li>
+                    <li>Start enjoying premium features immediately!</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Verification Status -->
+        <div class="cta-box">
+            <h2>Profile Verification</h2>
+            <p>After completing your profile, you'll see an unverified status on all pages except your profile page.</p>
+            
+            <h3 style="margin-top: 1.5rem; color: white;">Verification Timeline</h3>
+            <ul>
+                <li><strong>Submission:</strong> Submit your profile with college ID and photos</li>
+                <li><strong>Review:</strong> Our team manually verifies within 1 hour</li>
+                <li><strong>Notification:</strong> You'll receive a notification when verified</li>
+                <li><strong>Full Access:</strong> Once verified, you can use all features without restrictions</li>
+            </ul>
+
+            <div style="background: rgba(251,191,36,0.2); padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #fbbf24; margin-top: 1.5rem;">
+                <p style="color: white;"><strong>During verification:</strong> You can explore the app, but a message will appear on most pages saying "Your profile will be verified within 1 hour."</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="Features.html">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="Privacy.html">Privacy Policy</a></li>
+                        <li><a href="Terms.html">Terms of Service</a></li>
+                        <li><a href="ChildSafety.html">Child Safety</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p style="color: #9ca3af;">© 2025 SNEK. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📷</a>
+                    <a href="#">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
