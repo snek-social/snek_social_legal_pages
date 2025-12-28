@@ -1,198 +1,960 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Snek App</title>
-  <style>
-      * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", Arial, sans-serif;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>SNEK - Your College Social Network</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-  background-color: #0f172a;
-  color: #ffffff;
-  line-height: 1.6;
-}
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            color: #374151;
+        }
 
-/* HERO SECTION */
-.hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 20px;
-  gap: 60px;
-}
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.2;
+        }
 
-.hero-content {
-  max-width: 500px;
-}
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
 
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 12px;
-}
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
 
-.tagline {
-  font-size: 1.2rem;
-  color: #cbd5f5;
-  margin-bottom: 32px;
-}
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
 
-.store-buttons {
-  display: flex;
-  gap: 16px;
-}
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-.store-btn {
-  text-decoration: none;
-  padding: 14px 22px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
+        /* Navbar */
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.playstore {
-  background-color: #22c55e;
-  color: #052e16;
-}
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
 
-.appstore {
-  background-color: #ffffff;
-  color: #020617;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4f46e5;
+            text-decoration: none;
+        }
 
-.store-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
 
-/* APP IMAGE */
-.hero-image img {
-  max-height: 500px;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-/* FEATURES */
-.features {
-  padding: 80px 20px;
-  background-color: #020617;
-  text-align: center;
-}
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
 
-.features h2 {
-  font-size: 2.2rem;
-  margin-bottom: 50px;
-}
+        .btn-download {
+            background: #4f46e5;
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+        .btn-download:hover {
+            background: #4338ca;
+        }
 
-.feature-card {
-  background-color: #0f172a;
-  padding: 24px;
-  border-radius: 16px;
-  transition: transform 0.3s ease;
-}
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            font-size: 1.75rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #111827;
+        }
 
-.feature-card:hover {
-  transform: translateY(-6px);
-}
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: white;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-.feature-card h3 {
-  margin-bottom: 12px;
-}
+        .mobile-menu a {
+            padding: 0.75rem 0;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+        }
 
-.feature-card p {
-  color: #cbd5f5;
-  font-size: 0.95rem;
-}
+        .mobile-menu a:hover {
+            color: #4f46e5;
+        }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 24px;
-  font-size: 0.85rem;
-  color: #94a3b8;
-}
+        .mobile-download {
+            margin-top: 0.75rem;
+            background: #4f46e5;
+            color: white !important;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
 
-  </style>
+        /* Responsive Rules */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #ec4899 100%);
+            color: white;
+            padding: 5rem 0 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-app-store {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            gap: 0.75rem;
+            background: #000;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-app-store:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 1.75rem;
+        }
+
+        .btn-text-small {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .btn-text-large {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 350px;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 30px rgba(87, 87, 87, 0.3);
+            margin: 0 auto;
+            display: block;
+            background: #ffffff9e;
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: #f9fafb;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            display: inline-flex;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+        }
+
+        .view-all-btn {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .view-all-btn a {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .view-all-btn a:hover {
+            background: #4338ca;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -1.2rem;
+            right: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            background: white;
+            border: 2px solid #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4f46e5;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .step-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p {
+            color: #6b7280;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-text {
+            color: #374151;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .testimonial-role {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #9333ea 0%, #4f46e5 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: rgba(236, 72, 153, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .cta-features {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            display: block;
+            background: #f3f4f69a;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content,
+            .cta-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image,
+            .cta-image {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://ik.imagekit.io/02now7laz/uploads/SnekLogo.png" alt="SNEK Logo" style="height: 75px;"/>
+            </a>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Snek</h1>
-      <p class="tagline">
-        Smart. Simple. Seamless.
-      </p>
+            <!-- Desktop Links -->
+            <ul class="nav-links">
+                <li><a href="/report">Support</a></li>
+                <li><a href="/child-safety">Safety</a></li>
+                <li><a href="/contact-us">Contact</a></li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.snek.app&pcampaignid=web_share" class="btn-download" target="_blank">Download</a></li>
+            </ul>
 
-      <div class="store-buttons">
-        <a 
-          href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
-          target="_blank"
-          class="store-btn playstore"
-        >
-          Google Play
-        </a>
+            <!-- Hamburger -->
+            <button class="hamburger" onclick="toggleMenu()">
+                ☰
+            </button>
+        </div>
 
-        <a 
-          href="https://apps.apple.com/app/idYOUR_APP_ID"
-          target="_blank"
-          class="store-btn appstore"
-        >
-          App Store
-        </a>
-      </div>
-    </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/report">Support</a>
+            <a href="/child-safety">Safety</a>
+            <a href="/contact-us">Contact</a>
+            <a href="https://play.google.com/store/apps/details?id=com.snek.app&pcampaignid=web_share" class="mobile-download" target="_blank">Download</a>
+        </div>
+    </nav>
 
-    <div class="hero-image">
-      <img src="https://via.placeholder.com/300x600" alt="Snek App Preview" />
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Connect with Your College Community</h1>
+                    <p>SNEK is the ultimate social network for college students. Match, chat, join groups, and make
+                        meaningful connections on campus.</p>
 
-  <!-- FEATURES SECTION -->
-  <section class="features">
-    <h2>Why Snek?</h2>
+                    <div class="download-buttons" id="download">
+                        <!-- <a href="https://apps.apple.com" target="_blank" class="btn-app-store">
+                            <img src="https://ik.imagekit.io/02now7laz/uploads/Images/AppStore.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                            <div>
+                                <div class="btn-text-small">Download on the</div>
+                                <div class="btn-text-large">App Store</div>
+                            </div>
+                        </a> -->
 
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>🚀 Fast & Lightweight</h3>
-        <p>Optimised for smooth performance and quick access.</p>
-      </div>
+                        <a href="https://play.google.com/store/apps/details?id=com.snek.app&pcampaignid=web_share" target="_blank" class="btn-app-store">
+                            <img src="https://ik.imagekit.io/02now7laz/uploads/Images/PlayStore.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                            <div>
+                                <div class="btn-text-small">GET IT ON</div>
+                                <div class="btn-text-large">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
 
-      <div class="feature-card">
-        <h3>🔒 Secure</h3>
-        <p>Your data is protected with industry-grade security.</p>
-      </div>
+                    <!-- <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4.9★</div>
+                            <div class="stat-label">App Rating</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Colleges</div>
+                        </div>
+                    </div> -->
+                </div>
 
-      <div class="feature-card">
-        <h3>🎯 User-First Design</h3>
-        <p>Clean, intuitive UI designed for effortless use.</p>
-      </div>
+                <div class="hero-image">
+                    <img src="https://ik.imagekit.io/02now7laz/uploads/Hero.jpg"
+                        alt="SNEK App Interface">
+                </div>
+            </div>
+        </div>
 
-      <div class="feature-card">
-        <h3>⚡ Smart Features</h3>
-        <p>Powerful tools that adapt to your needs.</p>
-      </div>
-    </div>
-  </section>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" style="width: 100%">
+                <path fill="#ffffff"
+                    d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z">
+                </path>
+            </svg>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2025 Snek. All rights reserved.</p>
-  </footer>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need to Connect</h2>
+                <p>SNEK brings together the best features to help college students meet, connect, and build their
+                    community.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #e167a4 0%, #f7267d 100%);">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Images/Heart.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                    </div>
+                    <h3>Match & Connect</h3>
+                    <p>Swipe through profiles of students from your college or state. Match with people who share your
+                        interests and start meaningful conversations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #74a9ff 0%, #2e59e6 100%);">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Images/Chat.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                    </div>
+                    <h3>Private Chats</h3>
+                    <p>Chat one-on-one with your matches. Share images, have real conversations, and build genuine
+                        connections with fellow students.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4be2af 0%, #10956b 100%);">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Images/Group.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                    </div>
+                    <h3>Interest-Based Groups</h3>
+                    <p>Join or create groups for activities like sports, music, hiking, and more. Meet people from your
+                        college who share your passions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f3b64d 0%, #a25b0b 100%);">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Images/Feed.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                    </div>
+                    <h3>Social Feed</h3>
+                    <p>Share your moments, thoughts, and experiences with the entire SNEK community. Like, comment, and
+                        engage with posts from students nationwide.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a281ef 0%, #5c30a1 100%);">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Images/Incognito.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                    </div>
+                    <h3>College Confessions</h3>
+                    <p>Share anonymous text-based confessions visible only to students from your college. A safe space
+                        for honest conversations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #60cfe3 0%, #0b728c 100%);">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Images/Shield.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                    </div>
+                    <h3>Verified & Safe</h3>
+                    <p>Every user is verified with their college ID card. Our team manually reviews profiles to ensure a
+                        safe, authentic community of real students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started in 3 Easy Steps</h2>
+                <p>Join millions of users in just a few minutes</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Download.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                        <div class="step-number">1</div>
+                    </div>
+                    <h3>Download</h3>
+                    <p>Get the app from App Store or Google Play in seconds</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/User.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                        <div class="step-number">2</div>
+                    </div>
+                    <h3>Sign Up</h3>
+                    <p>Create your account quickly with email or social login</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <img src="https://ik.imagekit.io/02now7laz/uploads/Spark.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                        <div class="step-number">3</div>
+                    </div>
+                    <h3>Start Using</h3>
+                    <p>Enjoy all features instantly - no setup required</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Loved by Students Everywhere</h2>
+                <p>See what students are saying about SNEK</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"SNEK helped me find a study group for my calculus class. Made some
+                        great friends and my grades improved too!"</p>
+                    <div class="testimonial-author">Priya Sharma</div>
+                    <div class="testimonial-role">Engineering Student, Delhi</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"The verification process makes it feel so much safer than other apps. I
+                        know everyone here is a real college student."</p>
+                    <div class="testimonial-author">Rahul Verma</div>
+                    <div class="testimonial-role">Business Student, Mumbai</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"I joined a weekend hiking group through SNEK and met amazing people
+                        from my college. Best decision ever!"</p>
+                    <div class="testimonial-author">Ananya Gupta</div>
+                    <div class="testimonial-role">Arts Student, Bangalore</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h2>Ready to Transform Your Life?</h2>
+                    <p>Join over 100K students who have already discovered the power of SNEK. Download now and get
+                        started for free!</p>
+
+                    <div class="download-buttons">
+                        <!-- <a href="https://apps.apple.com" target="_blank" class="btn-app-store">
+                            <img src="https://ik.imagekit.io/02now7laz/uploads/Images/AppStore.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                            <div>
+                                <div class="btn-text-small">Download on the</div>
+                                <div class="btn-text-large">App Store</div>
+                            </div>
+                        </a> -->
+
+                        <a href="https://play.google.com/store/apps/details?id=com.snek.app&pcampaignid=web_share" target="_blank" class="btn-app-store">
+                            <img src="https://ik.imagekit.io/02now7laz/uploads/Images/PlayStore.svg" alt="App Store Logo" style="width: 36px; height: 36px;">
+                            <div>
+                                <div class="btn-text-small">GET IT ON</div>
+                                <div class="btn-text-large">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cta-image">
+                    <img src="https://ik.imagekit.io/02now7laz/uploads/Hero.png"
+                        alt="Happy Student">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/report">Help Center</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions">Terms of Service</a></li>
+                        <li><a href="/child-safety">Child Safety</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="color: #9ca3af;">© 2025 SNEK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
 
 </body>
+
 </html>
