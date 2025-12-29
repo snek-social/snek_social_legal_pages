@@ -1,386 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Privacy Policy - SNEK</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #000000;
-            --secondary: #1a1a1a;
-            --accent: #ff4d94;
-            --text: #ffffff;
-            --text-secondary: #cccccc;
         }
 
         body {
-            background-color: var(--primary);
-            color: var(--text);
+            font-family: 'Nunito', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: #374151;
+            background-color: #f9fafb;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            padding: 40px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-            animation: pulse 2s infinite;
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.2;
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, var(--accent), #ff8ab3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header-p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-secondary);
-        }
-
-        .decoration {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(var(--accent), transparent 70%);
-            opacity: 0.1;
-            border-radius: 50%;
-            top: -150px;
-            right: -150px;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        .decoration-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -100px;
-            left: -100px;
-            animation-delay: 5s;
-        }
-
-        .nav-btn {
-            display: inline-block;
-            margin: 30px 0;
-            padding: 12px 25px;
-            background-color: var(--secondary);
-            color: var(--text);
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: all 0.5s ease;
-        }
-
-        .nav-btn:hover::before {
-            left: 100%;
-        }
-
-        .nav-btn:hover {
-            background-color: var(--accent);
-            box-shadow: 0 0 20px rgba(255, 77, 148, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .content-section {
-            padding: 40px 0;
-        }
-
-        .policy-content {
-            background-color: var(--secondary);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-
-        .policy-content.active {
-            transform: translateY(0);
-            opacity: 1;
+            margin-bottom: 1rem;
         }
 
         h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-        }
-
-        h2 i {
-            margin-right: 10px;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
         }
 
         h3 {
-            font-size: 1.4rem;
-            margin: 25px 0 15px;
-            color: var(--text);
-        }
-
-        p {
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-        }
-
-        ul {
-            list-style-type: none;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-            color: var(--text-secondary);
-        }
-
-        li:before {
-            content: '•';
-            color: var(--accent);
             font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -5px;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
         }
 
-        .highlight {
-            background: rgba(255, 77, 148, 0.1);
-            padding: 20px;
-            border-left: 4px solid var(--accent);
-            border-radius: 4px;
-            margin: 20px 0;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
-        footer {
-            background-color: var(--secondary);
-            padding: 30px 0;
+        /* Navbar */
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        .btn-download {
+            background: #4f46e5;
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-download:hover {
+            background: #4338ca;
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            font-size: 1.75rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #111827;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: white;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu a {
+            padding: 0.75rem 0;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .mobile-menu a:hover {
+            color: #4f46e5;
+        }
+
+        .mobile-download {
+            margin-top: 0.75rem;
+            background: #4f46e5;
+            color: white !important;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
             text-align: center;
-            margin-top: 50px;
         }
 
-        .contact-info {
-            margin-bottom: 20px;
+        /* Responsive Rules */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        .btn-download {
+            background: #4f46e5;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-download:hover {
+            background: #4338ca;
+        }
+
+
+        /* Page Header */
+        .page-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #ec4899 100%);
+            height: 50vh;
+            color: white;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-box p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        .content-box ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-box li {
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+
+        .info-box {
+            background: #e0e7ff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .info-box p {
+            color: #3730a3;
+            margin: 0;
+        }
+
+        .info-box strong {
+            color: #3730a3;
+        }
+
+        .info-box a {
+            color: #4f46e5;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 1rem;
         }
 
         .social-links a {
-            color: var(--text);
+            color: #9ca3af;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--accent);
-            transform: translateY(-5px);
+            color: white;
         }
 
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-btn {
-                width: 80%;
-                text-align: center;
+            .nav-links {
+                display: none;
             }
-            
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
             h1 {
                 font-size: 2rem;
             }
-            
-            .logo {
-                font-size: 2.5rem;
+
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="decoration"></div>
-        <div class="decoration decoration-2"></div>
-    <div class="container header-content">
-        <div class="logo">
-            <i class="fas fa-comments"></i>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://ik.imagekit.io/02now7laz/uploads/SnekLogo.png" alt="SNEK Logo"
+                    style="height: 75px;" />
+            </a>
+
+            <!-- Desktop Links -->
+            <ul class="nav-links">
+                <li><a href="/report">Support</a></li>
+                <li><a href="/child-safety">Safety</a></li>
+                <li><a href="/contact-us">Contact</a></li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.snek.app&pcampaignid=web_share"
+                        class="btn-download" target="_blank">Download</a></li>
+            </ul>
+
+            <!-- Hamburger -->
+            <button class="hamburger" onclick="toggleMenu()">
+                ☰
+            </button>
         </div>
-        <h1>SNEK Privacy Policy</h1>
-        <p class="header-p">Learn how we protect your privacy and secure your data</p>
-        <a href="/terms-and-condition/" class="nav-btn" target="_blank" rel="noopener noreferrer">
-        View Terms & Conditions
-        </a>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/report">Support</a>
+            <a href="/child-safety">Safety</a>
+            <a href="/contact-us">Contact</a>
+            <a href="https://play.google.com/store/apps/details?id=com.snek.app&pcampaignid=web_share"
+                class="mobile-download" target="_blank">Download</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Learn how we collect, use, and protect your personal information.</p>
+        </div>
     </div>
-    </header>
 
-    <div class="container">
-        <div class="content-section">
-            <!-- Privacy Policy Content -->
-            <div class="policy-content active" id="privacy-content">
-                <h2><i class="fas fa-user-shield"></i> Privacy Policy</h2>
-                <strong>Last Updated:</strong> 13 Sep 2025</p>
+    <!-- Main Content -->
+    <main>
+        <div class="content-box">
+            <p style="color: #6b7280; font-style: italic;">Last Updated: December 29, 2025</p>
 
-                <h3>1. Introduction</h3>
-                <p>SNEK is dedicated to safeguarding your personal information and upholding your right to privacy. This Privacy Policy delineates the types of information we collect, the purposes for its collection, and the measures we undertake to protect it. By utilizing the SNEK application, you expressly consent to the data practices described herein.</p>
+            <h2>1. Introduction</h2>
+            <p>Welcome to SNEK ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the
+                security of your personal information. This Privacy Policy explains how we collect, use, disclose, and
+                safeguard your information when you use our mobile application and services.</p>
+            <p>By using SNEK, you agree to the collection and use of information in accordance with this policy. If you
+                do not agree with our policies and practices, please do not use our services.</p>
 
-                <h3>2. Information We Collect</h3>
-                <p>To provide and enhance our services, we collect the following categories of personal data:</p>
-                <ul>
-                    <li><strong>Account and Profile Information:</strong> This includes, but is not limited to, your full name, email address, phone number, stated gender, and academic institution details.</li>
-                    <li><strong>Identity Verification Data:</strong> To ensure the integrity of our community, we require the submission of a photographic image of your official college identification document alongside a contemporaneous selfie for verification purposes.</li>
-                    <li><strong>User-Generated Content:</strong> This encompasses all media you upload, including profile photographs, images posted within the application sourced from your device's gallery or camera, textual posts, group contributions, and confessions.</li>
-                    <li><strong>Communication Data:</strong> All content generated through the use of our messaging, audio calling, and video calling features is processed. We explicitly do not record or store the content of audio or video calls; however, metadata associated with such communications (including duration, timestamps, and participant identifiers) may be retained for operational purposes.</li>
-                    <li><strong>Technical and Device Information:</strong> We automatically collect specific data related to your device and interaction with our services. This includes your IP address, device model, operating system version, unique device identifiers, and diagnostic information such as application crash reports.</li>
-                    <li><strong>Push Notification Tokens:</strong> We collect a unique device token to facilitate the delivery of push notifications to your device.</li>
-                </ul>
+            <h2>2. Information We Collect</h2>
 
-                <h3>3. Information We Do Not Collect</h3>
-                <p>It is expressly stated that SNEK does not collect, track, or process your precise or approximate geolocation data.</p>
+            <h3>2.1 Information You Provide</h3>
+            <ul>
+                <li><strong>Account Information:</strong> Name, date of birth, gender, email address, and phone number
+                </li>
+                <li><strong>College Verification:</strong> College name, state, and college ID card image</li>
+                <li><strong>Identity Verification Data:</strong>To ensure the integrity of our community, we require the
+                    submission of a photographic image of your official college identification document alongside a
+                    contemporaneous selfie for verification purposes.</li>
+                <li><strong>User-Generated Content:</strong>This encompasses all media you upload, including profile
+                    photographs, images posted within the application sourced from your device's gallery or camera,
+                    textual posts, group contributions, and confessions.</li>
+                <li><strong>Communication Data:</strong>All content generated through the use of our messaging, audio
+                    calling, and video calling features is processed. We explicitly do not record or store the content
+                    of audio or video calls; however, metadata associated with such communications (including duration,
+                    timestamps, and participant identifiers) may be retained for operational purposes.</li>
+                <li><strong>Technical and Device Information:</strong>We automatically collect specific data related to
+                    your device and interaction with our services. This includes your IP address, device model,
+                    operating system version, unique device identifiers, and diagnostic information such as application
+                    crash reports.</li>
+                <li><strong>Push Notification Tokens:</strong>We collect a unique device token to facilitate the
+                    delivery of push notifications to your device.</li>
+            </ul>
 
-                <h3>4. Purposes of Data Processing</h3>
-                <p>Your information is utilized for the following legitimate business interests:</p>
-                <ul>
-                    <li><strong>User Verification:</strong> To authenticate your status as a bona fide college student, thereby maintaining a secure and trustworthy platform environment.</li>
-                    <li><strong>Service Provisioning:</strong> To facilitate the core functionalities of the application, including dating features, social networking, direct messaging, and audio/video communication.</li>
-                    <li><strong>Service Personalization:</strong> To curate and tailor your individual experience, including your user profile and content feed.</li>
-                    <li><strong>Communication:</strong> To transmit operational and promotional push notifications regarding matches, messages, application updates, and special offers.</li>
-                    <li><strong>Security and Fraud Prevention:</strong> To monitor for and mitigate instances of fraudulent activity, impersonation, and other forms of platform abuse.</li>
-                </ul>
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the collected information for the following purposes:</p>
+            <ul>
+                <li><strong>Account Creation & Verification:</strong> To create and verify your account, ensuring only
+                    legitimate college students access the platform</li>
+                <li><strong>Service Delivery:</strong>To facilitate the core functionalities of the application,
+                    including dating features, social networking, direct messaging, and audio/video communication.</li>
+                <li><strong>Safety & Security:</strong> To verify identities, prevent fraud, detect abuse, and maintain
+                    community standards</li>
+                <li><strong>Communication:</strong>To transmit operational and promotional push notifications regarding
+                    matches, messages, application updates, and special offers.
+                </li>
+                <li><strong>Analytics:</strong> To understand how users interact with our app and improve our services
+                </li>
+            </ul>
 
-                <h3>5. Application Permissions</h3>
-                <p>The SNEK application requests the following permissions on your device, which are integral to its functionality:</p>
-                <ul>
-                    <li><strong>Camera:</strong> Permission is required to capture images and video for identity verification selfies and for participation in video calls.</li>
-                    <li><strong>Gallery/Storage:</strong> Permission is required to access and upload photographs from your device's local storage for use as profile pictures or within posts.</li>
-                    <li><strong>Microphone:</strong> Permission is required to capture audio for participation in audio and video calls.</li>
-                    <li><strong>Notifications:</strong> Permission is required to display alerts and push notifications on your device.</li>
-                </ul>
+            <h2>4. Information Sharing & Disclosure</h2>
 
-                <div class="highlight">
-                    <p><strong>Your Privacy Matters:</strong> We prioritize the security of your data, especially your private communications. We never record or store the content of your audio/video calls or private chats.</p>
-                </div>
+            <h3>4.1 With Other Users</h3>
+            <p>Your profile information (name, college, photos, hobbies) is visible to other verified users within the
+                app. Your posts in the Feed section are visible to all users, while Confessions are only visible to
+                users from your college.</p>
 
-                <h3>6. Account Deactivation and Data Deletion</h3>
-                <ul>
-                    <li><strong>Profile Deactivation:</strong> You retain the right to deactivate your user profile at any time directly through the application's interface. This action will render your profile temporarily inactive.</li>
-                    <li><strong>Account Deletion:</strong> To initiate the permanent and irreversible deletion of your account and all associated personal data, you must submit a formal request via email to our administrative team at [support@snekapp.com]. Processing will commence upon receipt of your request.</li>
-                </ul>
+            <h3>4.2 With Service Providers</h3>
+            <p>We share information with third-party service providers who assist us with:</p>
+            <ul>
+                <li>Cloud hosting and data storage</li>
+                <li>Analytics and app performance monitoring</li>
+                <li>Customer support services</li>
+                <li>Email and push notification delivery</li>
+            </ul>
 
-                <h3>7. Data Security Protocols</h3>
-                <p>We implement robust technical and organizational security measures designed to protect your data from unauthorized access, alteration, or destruction. Particularly sensitive data, such as college identification documents and verification photographs, is protected using industry-standard encryption protocols.</p>
+            <h3>4.3 Legal Requirements</h3>
+            <p>We may disclose your information if required by law, court order, or governmental request, or to protect
+                our rights, property, or safety, or that of our users or the public.</p>
 
-                <h3>8. Policy Regarding Minors</h3>
-                <p>SNEK is strictly prohibited for use by individuals under the age of sixteen (16). We do not knowingly solicit or collect any information from minors.</p>
+            <h3>4.4 Business Transfers</h3>
+            <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred to the
+                acquiring entity.</p>
 
-                <h3>9. Amendments to This Policy</h3>
-                <p>We reserve the right to modify this Privacy Policy periodically. Any such amendments will be communicated to users through in-application notifications or via email. The "Last Updated" date at the commencement of this policy will be revised accordingly.</p>
+            <h2>5. Data Security</h2>
+            <p>We implement industry-standard security measures to protect your personal information:</p>
+            <ul>
+                <li>Encryption of data in transit and at rest</li>
+                <li>Secure servers with restricted access</li>
+                <li>Regular security audits and updates</li>
+                <li>Manual verification of college IDs by trained staff</li>
+                <li>Automated content moderation systems</li>
+            </ul>
+            <p>However, no method of transmission over the internet is 100% secure. While we strive to protect your
+                information, we cannot guarantee absolute security.</p>
 
-                <h3>10. Contact Information</h3>
-                <p>For any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us at:</p>
-                <p><strong>Email:</strong> support@snek.co.in<br>
-                <strong>Postal Address:</strong> 5th-FR FL-5A, 57, SR Road, LP-79/4/8,  Kolkata, Tiljala, South 24 Parganas, West Bengal-700039</p>
+            <h2>6. Your Rights & Choices</h2>
+            <p>You have the following rights regarding your personal information:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your personal data</li>
+                <li><strong>Correction:</strong> Update your email address and profile information (name and DOB cannot
+                    be changed)</li>
+                <li><strong>Deletion:</strong> Request deletion of your account and associated data</li>
+                <li><strong>Deactivation:</strong> Temporarily deactivate your account</li>
+                <li><strong>Notification Settings:</strong> Control what notifications you receive</li>
+                <li><strong>Blocking:</strong> Block specific users from contacting you</li>
+            </ul>
+
+            <h2>7. Data Retention</h2>
+            <p>We retain your personal information for as long as your account is active or as needed to provide
+                services. Specific retention periods:</p>
+            <ul>
+                <li><strong>Active Accounts:</strong> Data retained indefinitely while account is active</li>
+                <li><strong>Deactivated Accounts:</strong> Data retained for 90 days, then permanently deleted</li>
+                <li><strong>Deleted Accounts:</strong> Most data deleted within 30 days; some data retained for
+                    legal/safety purposes for up to 1 year</li>
+                <li><strong>Chat Messages:</strong> Retained until manually deleted by users</li>
+                <li><strong>Reported Content:</strong> Retained for up to 2 years for safety and legal purposes</li>
+            </ul>
+
+            <h2>8. Children's Privacy</h2>
+            <p>SNEK is exclusively for users aged 16 and above. We do not knowingly collect information from individuals
+                under 16. If we discover that we have collected data from someone under 16, we will immediately delete
+                their account and all associated information.</p>
+
+            <h2>9. Third-Party Links</h2>
+            <p>Our app may contain links to third-party websites or services. We are not responsible for the privacy
+                practices of these third parties. We encourage you to review their privacy policies.</p>
+
+            <h2>10. International Data Transfers</h2>
+            <p>Your information may be transferred to and processed in countries other than your country of residence.
+                We ensure appropriate safeguards are in place to protect your information in accordance with this
+                Privacy Policy.</p>
+
+            <h2>11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any material changes via email
+                or in-app notification. The "Last Updated" date at the top will reflect when changes were made. Your
+                continued use of SNEK after changes constitutes acceptance of the updated policy.</p>
+
+            <h2>12. Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+
+            <div class="info-box">
+                <p><strong>Email:</strong> support@snek.co.in</p>
+                <p><strong>Address:</strong> 5th-FR FL-5A, 57, SR Road, LP-79/4/8, Kolkata, West Bengal – 700039</p>
             </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="contact-info">
-                <h3>Have Questions About Privacy?</h3>
-                <p>Reach out to our support team for assistance</p>
-                <p>Email: support@snek.co.in</p>
-                <p>Phone: +919211369444</p>
+            <div class="footer-grid">
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/report">Help Center</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions">Terms of Service</a></li>
+                        <li><a href="/child-safety">Child Safety</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+
+            <div class="footer-bottom">
+                <p style="color: #9ca3af;">© 2025 SNEK. All rights reserved.</p>
             </div>
-            <p>© 2025 SNEK. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate elements on scroll
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.transform = 'translateY(0)';
-                        entry.target.style.opacity = '1';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all policy content sections
-            document.querySelectorAll('.policy-content').forEach(content => {
-                observer.observe(content);
-            });
-        });
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
     </script>
 </body>
+
 </html>
